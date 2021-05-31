@@ -43,7 +43,7 @@ console.log(stringQuantity('Inconstitucionalissimamente'));
 
 const transformInLowerCase = string => string.toLowerCase();
 
-console.log(transformInLowerCase('OI MEU CHAPA!'));
+console.log(transformInLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO'));
 
 /*
     04
