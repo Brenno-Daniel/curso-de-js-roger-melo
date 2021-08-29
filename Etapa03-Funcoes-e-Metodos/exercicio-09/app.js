@@ -31,6 +31,11 @@ const stringQuantity = string => `A palavra: "${string}", possui ${string.length
 console.log(stringQuantity('Paralelepipedo'));
 console.log(stringQuantity('Inconstitucionalissimamente'));
 
+// -- Código da aula --
+const getStringLength = string => string.length;
+
+console.log(getStringLength('olá'));
+
 /*
     03
   
@@ -45,12 +50,26 @@ const transformInLowerCase = string => string.toLowerCase();
 
 console.log(transformInLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO'));
 
+// -- Código da aula --
+const convertToLowerCase = string => string.toLowerCase();
+
+console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO'));
+
 /*
     04
   
     - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
     - Ao ser invocada, a função deve retornar o index do caractere na string.
   */
+
+    const indexOfChar = (character, string) => `O carácter: "${character}" está na posição: ${string.indexOf(character)} na palavra: ${string}` ;
+
+    console.log(indexOfChar('e', 'Brrrenno'));
+
+    // -- Código da aula --
+    const getIndex = (character, string) => string.indexOf(character);
+
+    console.log(getIndex('2', '123'));
 
 /*
     05
@@ -59,6 +78,14 @@ console.log(transformInLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO E
       passado por argumento existe no array (também passado por argumento).
   */
 
+      const getItem = (item, array) => `O item: "${item}" está incluso no array? ${array.includes(item)}`;
+
+      console.log(getItem('maça', ['banana', 'laranja', 'maça']));
+
+      // -- Código da aula --
+      const isItemIncluded = (item, array) => array.includes(item);
+
+      console.log(isItemIncluded(2, [7, 3, 1]));
 /*
     06
   
