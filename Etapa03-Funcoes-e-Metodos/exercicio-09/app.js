@@ -62,14 +62,14 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
     - Ao ser invocada, a função deve retornar o index do caractere na string.
   */
 
-    const indexOfChar = (character, string) => `O carácter: "${character}" está na posição: ${string.indexOf(character)} na palavra: ${string}` ;
+const indexOfChar = (character, string) => `O carácter: "${character}" está na posição: ${string.indexOf(character)} na palavra: ${string}`;
 
-    console.log(indexOfChar('e', 'Brrrenno'));
+console.log(indexOfChar('e', 'Brrrenno'));
 
-    // -- Código da aula --
-    const getIndex = (character, string) => string.indexOf(character);
+// -- Código da aula --
+const getIndex = (character, string) => string.indexOf(character);
 
-    console.log(getIndex('2', '123'));
+console.log(getIndex('2', '123'));
 
 /*
     05
@@ -78,20 +78,29 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
       passado por argumento existe no array (também passado por argumento).
   */
 
-      const getItem = (item, array) => `O item: "${item}" está incluso no array? ${array.includes(item)}`;
+const getItem = (item, array) => `O item: "${item}" está incluso no array? ${array.includes(item)}`;
 
-      console.log(getItem('maça', ['banana', 'laranja', 'maça']));
+console.log(getItem('maça', ['banana', 'laranja', 'maça']));
 
-      // -- Código da aula --
-      const isItemIncluded = (item, array) => array.includes(item);
+// -- Código da aula --
+const isItemIncluded = (item, array) => array.includes(item);
 
-      console.log(isItemIncluded(2, [7, 3, 1]));
+console.log(isItemIncluded(2, [7, 3, 1]));
 /*
     06
   
     - Crie uma função que retorna a concatenação de 2 arrays, passados como  
       argumentos em sua invocação;
   */
+
+const arrayConcatenation = (array1, array2) => array1.concat(array2);
+
+console.log(arrayConcatenation([1, 2, 3], [4, 5, 6]));
+
+// -- Código da aula --
+const concatArrays = (firstArray, secondArray) => firstArray.concat(secondArray);
+
+console.log(concatArrays([1, 2, 3], [4, 5, 6]));
 
 /*
     07
@@ -100,12 +109,24 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
       mas com o último item removido.
   */
 
+const removeLastItem = array => {
+    array.pop();
+    return array;
+};
+
+console.log(removeLastItem([1, 2, 3]));
+
 /*
     08
   
     - Crie uma função que retorna se o valor passado como argumento em sua  
       invocação é null.
   */
+
+const isNullValue = value => value === null;
+
+console.log(isNullValue('null'));
+console.log(isNullValue(null));
 
 /*
     09
@@ -118,6 +139,25 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
       foi exibido.
   */
 
+const callbackFunctionInvoke = callbackFunction => {
+    callbackFunction();
+};
+
+const showName = () => console.log('brenno');
+
+callbackFunctionInvoke(showName);
+
+// -- Código da aula --
+const invokeCallback = callback => {
+    callback();
+};
+
+const logName = () => {
+    console.log('Brennooo');
+};
+
+invokeCallback(logName);
+
 /*
     10
   
@@ -128,6 +168,14 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
     - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
       resulte no triplo de 33.
   */
+
+const callCallback = (value, callback) => {
+    return callback(value);
+};
+
+const triple = number => number * 3;
+
+console.log(callCallback(33, triple));
 
 /*
     11
@@ -140,20 +188,39 @@ console.log(convertToLowerCase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM 
 
 const numbers = [1, 2, 3];
 
+const logArrayMessage = (value, index, array) => console.log(`O ${index + 1}º item do array ${array} é ${value}`);
+
+numbers.forEach(logArrayMessage);
+
+// -- Código da aula --
+const showNumbersInfo = (item, index, array) => {
+    const itemPosition = index + 1;
+    const items = array.join(', ');
+
+    console.log(`O ${itemPosition}º item do array [${items}] é ${item}.`);
+};
+
+numbers.forEach(showNumbersInfo);
+
 /*
     12
   
     - Converta o for loop abaixo em um forEach;
-    - Após a conversão, verifique se a cópia do array lettersCopy realmente foi  
-      criada.
+    - Após a conversão, verifique se a cópia do array lettersCopy realmente foi criada.
   */
 
 const letters = ['v', 'e', 'p'];
 let lettersCopy = [];
 
-for (let i = 0; i < letters.length; i++) {
-    lettersCopy.push(letters[i]);
-}
+// for (let i = 0; i < letters.length; i++) {
+//     lettersCopy.push(letters[i]);
+// }
+
+letters.forEach(letter => {
+    lettersCopy.push(letter);
+});
+
+console.log(lettersCopy);
 
 /*
     13
@@ -173,7 +240,7 @@ for (let i = 0; i < letters.length; i++) {
     </article>
   */
 
-// const section = document.querySelector('[data-js="section"]');
+const section = document.querySelector('[data-js="section"]');
 
 const review = [
     'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li o/.',
@@ -184,7 +251,13 @@ const review = [
 
 let paragraphs = '';
 
-// section.innerHTML = paragraphs;
+const createParagraphs = paragraph => {
+    paragraphs += `<p>${paragraph}</p>`;
+};
+
+review.forEach(createParagraphs);
+
+section.innerHTML = paragraphs;
 
 /*
     14
@@ -206,3 +279,28 @@ let paragraphs = '';
       pelo restante da quantidade de pessoas que curtiram o post (além das duas  
       pessoas já mencionadas no início da mensagem).
   */
+
+const getLikesMessage = (names = []) => {
+    const totalNames = names.length;
+    const firstName = names[0];
+    const secondName = names[1];
+    const thirdName = names[2];
+    const totalNamesMinusTwo = names.length - 2;
+
+    switch (totalNames) {
+        case 0:
+            return `Ninguém curtiu isso`;
+        case 1:
+            return `${firstName} curtiu isso`;
+        case 2:
+            return `${firstName} e ${secondName} curtiram isso`;
+        case 3:
+            return `${firstName}, ${secondName} e ${thirdName} curtiram isso`;
+        default:
+            return `${firstName}, ${secondName} e mais ${totalNamesMinusTwo} curtiram isso`;
+    }
+};
+
+console.log(getLikesMessage());
+console.log(getLikesMessage(['Brenn', 'Brendon']));
+console.log(getLikesMessage(['Brenn', 'Brendon', 'Breeeeno', 'Brennoo', 'Breno']));
