@@ -250,6 +250,6 @@ const getTypeDefinition2 = type => {
     }[type];
 };
 
-console.log(getTypeDefinition('null'));
-console.log(getTypeDefinition(undefined));
-console.log(getTypeDefinition('object'));
+console.log(getTypeDefinition2('null'));
+console.log(getTypeDefinition2(undefined));
+console.log(getTypeDefinition2('object'));
