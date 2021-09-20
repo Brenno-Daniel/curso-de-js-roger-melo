@@ -241,7 +241,7 @@ console.log(getTypeDefinition('null'));
 console.log(getTypeDefinition(undefined));
 console.log(getTypeDefinition('object'));
 
-// Outra forma de resolver, porém não é a mais recomendada, mas que podemos encontrar por ai...
+// Outra forma de resolver, porém não é a mais recomendada em questão de legibilidade, mas que podemos encontrar por ai...
 const getTypeDefinition2 = type => {
     return {
         null: 'Seta, explicitamente, uma variável sem valor.',
