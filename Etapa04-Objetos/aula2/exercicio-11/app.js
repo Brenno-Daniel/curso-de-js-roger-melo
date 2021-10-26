@@ -21,8 +21,8 @@ const name = 'Brenno';
   - Você sabe por que isso aconteceu?
 */
 
-const showAge = function (age) {
-    age = 23;
+const showAge = () => {
+    let age = 23;
     console.log(age);
 };
 
@@ -51,17 +51,21 @@ const car = {
     name: 'Corsa',
     brand: 'Chevrolet',
     colors: ['Branco', 'Azul', 'Preto'],
-    isRuning: false,
+    isRunning: false,
     run() {
-        this.isRuning = true;
+        this.isRunning = true;
         return `O ${this.name} está em movimento`;
     },
     stop() {
-        this.isRuning = false;
+        this.isRunning = false;
         return `O ${this.name} está parado`;
     },
     getColorsMessage() {
-        return `O ${this.name} está disponível nas cores: ${this.colors[0]}, ${this.colors[1]}, ${this.colors[2]}`;
+        // O trecho de código: this.colors[this.colors.length - 1], vai pegar sempre a última posição do array independente de seu tamanho =D
+        const lastItemOfArray = this.colors[this.colors.length - 1];
+        const colors = this.colors.join(', ').replace(lastItemOfArray, `e ${lastItemOfArray}`);
+
+        return `O ${this.name} está disponível nas cores: ${colors}`;
     },
 };
 
@@ -70,16 +74,16 @@ const car = {
 
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
-car.run();
-console.log(car.isRuning);
+console.log(car.run());
+console.log(car.isRunning === true);
 
 /*
   05
 
   - Faça o carro parar e exiba no console se ele realmente está parado.
 */
-car.stop();
-console.log(car.isRuning);
+console.log(car.stop());
+console.log(car.isRunning === false);
 
 /*
   06
@@ -92,6 +96,6 @@ console.log(car.getColorsMessage());
   07
 
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
-  - Utilize a notação de colchetes para acessar as propriedades do carro.
+  - Utilize a *** notação de colchetes *** para acessar as propriedades do carro.
 */
-console.log(`O carro é um ${car.brand} ${car.name}`);
+console.log(`O carro é um ${car['brand']} ${car['name']}`);
