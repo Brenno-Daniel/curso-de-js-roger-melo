@@ -17,13 +17,13 @@ const paragraphs = document.querySelectorAll('p');
 // innerText vai receber todo texto visível que o elemento contém
 // textContent vai receber todo texto que o elemento contém independente de estar visível ou não
 paragraphs.forEach(paragraph => {
-    if (paragraph.textContent.includes('error')) {
-        paragraph.classList.add('error');
-    }
+  if (paragraph.textContent.includes('error')) {
+    paragraph.classList.add('error');
+  }
 
-    if (paragraph.textContent.includes('success')) {
-        paragraph.classList.add('success');
-    }
+  if (paragraph.textContent.includes('success')) {
+    paragraph.classList.add('success');
+  }
 });
 
 const title = document.querySelector('h1');
