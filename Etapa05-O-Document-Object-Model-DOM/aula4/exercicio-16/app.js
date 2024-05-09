@@ -7,15 +7,23 @@
 
 const div = document.querySelector('div');
 const elementsInsideDiv = Array.from(div.children);
+let clickedChildDivMessage = '';
+let clickedDivMessage = '';
 
 elementsInsideDiv.forEach(element => {
-    element.addEventListener('click', () => {
-        console.log('Clicou no filho da div.');
+    element.addEventListener('click', event => {
+        const tagName = event.target.tagName.toUpperCase();
+
+        // console.log(`Clicou no ${tagName}, filho da div.`);
+        h2.innerText = `Clicou no ${tagName}, filho da div.`;
     });
 });
 
-div.addEventListener('click', () => {
-    console.log('Clicou na div.');
+div.addEventListener('click', event => {
+    if (event.target.textContent !== 'TV portátil') {
+        // console.log('Clicou na div.');
+        h2.innerText = `${h2.innerText} \n Clicou na div.`;
+    }
 });
 
 /*
@@ -34,12 +42,19 @@ div.addEventListener('click', () => {
     filho da div, ao invés de ser exibida no console, seja inserida neste h2.
 */
 
+const h2 = document.createElement('h2');
+document.querySelector('div').append(h2);
+
 /*
   04
 
   - Faça com que quando o texto do h2 for copiado, a mensagem "Texto copiado!"  
     seja exibida no console.
 */
+
+h2.addEventListener('copy', () => {
+    console.log('Texto copiado!');
+});
 
 /*
   05
