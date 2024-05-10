@@ -5,33 +5,6 @@
     'Clicou na div.' não seja exibida no console.
 */
 
-const div = document.querySelector('div');
-const elementsInsideDiv = Array.from(div.children);
-let clickedChildDivMessage = '';
-let clickedDivMessage = '';
-
-const setClickEventListenerToElementAndTextToH2 = element => {
-    element.addEventListener('click', event => setClickedChildDivWithTagNameUppercaseTextToH2(event));
-};
-
-const setClickedChildDivWithTagNameUppercaseTextToH2 = event => {
-    const tagName = event.target.tagName.toUpperCase();
-
-    h2.innerText = `Clicou no ${tagName}, filho da div.`;
-};
-
-elementsInsideDiv.forEach(element => setClickEventListenerToElementAndTextToH2(element));
-
-div.addEventListener('click', event => setClickedDivTextToH2WhenIsPortableTV(event));
-
-const setClickedDivTextToH2WhenIsPortableTV = event => {
-    const isPortableTV = event.target.textContent !== 'TV portátil';
-
-    if (isPortableTV) {
-        h2.innerText = `${h2.innerText} \n Clicou na div.`;
-    }
-};
-
 /*
   02
 
@@ -48,19 +21,12 @@ const setClickedDivTextToH2WhenIsPortableTV = event => {
     filho da div, ao invés de ser exibida no console, seja inserida neste h2.
 */
 
-const h2 = document.createElement('h2');
-document.querySelector('div').insertAdjacentElement('afterend', h2);
-
 /*
   04
 
   - Faça com que quando o texto do h2 for copiado, a mensagem "Texto copiado!"  
     seja exibida no console.
 */
-
-h2.addEventListener('copy', () => {
-    console.log('Texto copiado!');
-});
 
 /*
   05
@@ -70,14 +36,6 @@ h2.addEventListener('copy', () => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
-const eggDiv = document.querySelector('.egg');
-
-const setOffsetXAndYToEggDivContent = event => {
-    eggDiv.textContent = `X: ${event.offsetX} | Y: ${event.offsetY}`;
-};
-
-eggDiv.addEventListener('mousemove', event => setOffsetXAndYToEggDivContent(event));
-
 /*
   06
 
@@ -85,13 +43,38 @@ eggDiv.addEventListener('mousemove', event => setOffsetXAndYToEggDivContent(even
     clicado.
 */
 
+const div = document.querySelector('div');
+const h2 = document.querySelector('h2');
+const eggDiv = document.querySelector('.egg');
 const changeEggColorButton = document.querySelector('button');
 
-const setBackgroundColorToEggDiv = () => {
+const showClickedElement = ({ target }) => {
+    const clickedElement = target.tagName.toLowerCase();
+
+    if (clickedElement === 'div') {
+        h2.textContent = `Clicou na div.`;
+        return;
+    }
+
+    h2.textContent = `Clicou no ${clickedElement}, filho da div.`;
+};
+
+const logCopyMessage = () => {
+    console.log('Texto copiado!');
+};
+
+const showCoordinates = ({ offsetX, offsetY }) => {
+    eggDiv.textContent = `X: ${offsetX} | Y: ${offsetY}`;
+};
+
+const changeEggColor = () => {
     eggDiv.style.background = 'lightgoldenrodyellow';
 };
 
-changeEggColorButton.addEventListener('click', () => setBackgroundColorToEggDiv());
+div.addEventListener('click', showClickedElement);
+h2.addEventListener('copy', logCopyMessage);
+eggDiv.addEventListener('mousemove', showCoordinates);
+changeEggColorButton.addEventListener('click', changeEggColor);
 
 /*
   07
@@ -114,12 +97,12 @@ const people = [
     { id: 9, name: 'Hamilton Silva', profession: 'Advogado' },
 ];
 
-const logMessageIfContainSomeFrontendDeveloper = person => {
-    const isFrontendDeveloperProfession = person.profession === 'Front-end developer';
+const logMessageIfContainSomeFrontendDeveloper = profession => {
+    const isSomeFrontendDeveloperProfession = profession === 'Front-end developer';
 
-    if (isFrontendDeveloperProfession) {
+    if (isSomeFrontendDeveloperProfession) {
         console.log('O array people contém, no mínimo, um(a) Front-end developer.');
     }
 };
 
-people.some(person => logMessageIfContainSomeFrontendDeveloper(person));
+people.some(({ profession }) => logMessageIfContainSomeFrontendDeveloper(profession));
