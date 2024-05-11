@@ -4,6 +4,22 @@
   - No envio do form, faça com que a página não seja recarregada.
 */
 
+const form = document.querySelector('form');
+const inputValue = document.querySelector('#input');
+const pattern = /^[a-zA-Z0-9]{7,11}$/;
+
+form.addEventListener('submit', event => {
+    event.preventDefault();
+
+    console.log(event.target.input.value);
+
+    if (pattern.test(inputValue.value)) {
+        console.log('O valor inserido no input é válido =)');
+    } else {
+        console.log('Valor inválido =(');
+    }
+});
+
 /*
   02
 
@@ -19,6 +35,11 @@
   - Exiba no console o boolean no qual este teste resulta.
 */
 
+const documentationRegex = /documentation/;
+const paragraph = document.querySelector('p').textContent;
+
+console.log('documentationRegex ', documentationRegex.test(paragraph));
+
 /*
   04
 
@@ -28,6 +49,9 @@
 */
 
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta';
+const b99Regex = /\w\d\d/;
+
+console.log('b99Regex ', b99Regex.test(B99message));
 
 /*
   05
@@ -36,11 +60,12 @@ const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 
     resultado do teste entre a regex e a string exibido no console seja true.
 */
 
-const word = 'O que a NASA fotografou no dia do seu aniversário?';
+// const word = 'O que a NASA fotografou no dia do seu aniversário?';
+const word = 'NASA';
 const NASARegex = /^[A-Z]{4}$/;
 const NASAResult = NASARegex.test(word);
 
-console.log(NASAResult);
+console.log('NASAResult ', NASAResult);
 
 /*
   06
